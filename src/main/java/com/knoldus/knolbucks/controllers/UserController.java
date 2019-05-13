@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/users")
 @RestController
 public class UserController {
 
@@ -29,7 +29,7 @@ public class UserController {
 
     }
 
-    @GetMapping(value = "/getAll")
+    @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
