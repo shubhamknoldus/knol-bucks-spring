@@ -24,34 +24,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `users` /*!40100 DEFAULT CHARACTER SET 
 USE `users`;
 
 --
--- Table structure for table `couponRequests`
---
-
-DROP TABLE IF EXISTS `couponRequests`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `couponRequests` (
-  `id` varchar(36) NOT NULL,
-  `requesterId` varchar(36) NOT NULL,
-  `issuerId` varchar(36) NOT NULL,
-  `requestedOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `approvedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `quantity` int(11) NOT NULL,
-  `isApproved` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `couponRequests`
---
-
-LOCK TABLES `couponRequests` WRITE;
-/*!40000 ALTER TABLE `couponRequests` DISABLE KEYS */;
-/*!40000 ALTER TABLE `couponRequests` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `users`
 --
 
@@ -116,4 +88,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-13 13:39:10
+-- Dump completed on 2019-05-13 15:29:54

@@ -24,14 +24,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `coupons` /*!40100 DEFAULT CHARACTER SE
 USE `coupons`;
 
 --
--- Current Database: `users`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `users` /*!40100 DEFAULT CHARACTER SET latin1 */;
-
-USE `users`;
-
---
 -- Table structure for table `couponRequests`
 --
 
@@ -58,6 +50,14 @@ LOCK TABLES `couponRequests` WRITE;
 /*!40000 ALTER TABLE `couponRequests` DISABLE KEYS */;
 /*!40000 ALTER TABLE `couponRequests` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Current Database: `users`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `users` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `users`;
 
 --
 -- Table structure for table `users`
@@ -124,4 +124,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-13 13:39:56
+-- Dump completed on 2019-05-13 15:29:33
