@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.26, for Linux (x86_64)
 --
--- Host: localhost    Database: couponService
+-- Host: localhost    Database: coupons
 -- ------------------------------------------------------
 -- Server version	5.7.26-0ubuntu0.18.04.1
 
@@ -16,15 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `couponService`
+-- Current Database: `coupons`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `couponService` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `coupons` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
-USE `couponService`;
+USE `coupons`;
 
-
-SET sql_mode = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 --
 -- Table structure for table `couponRequests`
 --
@@ -40,11 +38,7 @@ CREATE TABLE `couponRequests` (
   `approvedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `quantity` int(11) NOT NULL,
   `isApproved` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `fk_issuer` (`issuerId`),
-  KEY `fk_requester` (`requesterId`),
-  CONSTRAINT `fk_issuer` FOREIGN KEY (`issuerId`) REFERENCES `users` (`id`),
-  CONSTRAINT `fk_requester` FOREIGN KEY (`requesterId`) REFERENCES `users` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,6 +49,47 @@ CREATE TABLE `couponRequests` (
 LOCK TABLES `couponRequests` WRITE;
 /*!40000 ALTER TABLE `couponRequests` DISABLE KEYS */;
 /*!40000 ALTER TABLE `couponRequests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Current Database: `users`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `users` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `users`;
+
+--
+-- Table structure for table `transactions`
+--
+
+DROP TABLE IF EXISTS `transactions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transactions` (
+  `id` varchar(36) NOT NULL,
+  `userId` varchar(36) NOT NULL,
+  `walletId` varchar(36) NOT NULL,
+  `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` varchar(32) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `amount` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_user_tran` (`userId`),
+  KEY `fk_wallet_tran` (`walletId`),
+  CONSTRAINT `fk_user_tran` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
+  CONSTRAINT `fk_wallet_tran` FOREIGN KEY (`walletId`) REFERENCES `wallet` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transactions`
+--
+
+LOCK TABLES `transactions` WRITE;
+/*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -122,4 +157,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-10 15:10:15
+-- Dump completed on 2019-05-13 15:45:41
