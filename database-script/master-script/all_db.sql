@@ -60,6 +60,39 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `users` /*!40100 DEFAULT CHARACTER SET 
 USE `users`;
 
 --
+-- Table structure for table `transactions`
+--
+
+DROP TABLE IF EXISTS `transactions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transactions` (
+  `id` varchar(36) NOT NULL,
+  `userId` varchar(36) NOT NULL,
+  `walletId` varchar(36) NOT NULL,
+  `createdOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` varchar(32) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `amount` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_user_tran` (`userId`),
+  KEY `fk_wallet_tran` (`walletId`),
+  CONSTRAINT `fk_user_tran` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
+  CONSTRAINT `fk_wallet_tran` FOREIGN KEY (`walletId`) REFERENCES `wallet` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transactions`
+--
+
+LOCK TABLES `transactions` WRITE;
+/*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -124,4 +157,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-13 15:29:33
+-- Dump completed on 2019-05-13 15:45:41
