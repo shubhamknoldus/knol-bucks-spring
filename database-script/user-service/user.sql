@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.26, for Linux (x86_64)
 --
--- Host: localhost    Database: couponService
+-- Host: localhost    Database: users
 -- ------------------------------------------------------
 -- Server version	5.7.26-0ubuntu0.18.04.1
 
@@ -16,15 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `couponService`
+-- Current Database: `users`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `couponService` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `users` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
-USE `couponService`;
+USE `users`;
 
-
-SET sql_mode = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 --
 -- Table structure for table `couponRequests`
 --
@@ -40,11 +38,7 @@ CREATE TABLE `couponRequests` (
   `approvedOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `quantity` int(11) NOT NULL,
   `isApproved` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `fk_issuer` (`issuerId`),
-  KEY `fk_requester` (`requesterId`),
-  CONSTRAINT `fk_issuer` FOREIGN KEY (`issuerId`) REFERENCES `users` (`id`),
-  CONSTRAINT `fk_requester` FOREIGN KEY (`requesterId`) REFERENCES `users` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -122,4 +116,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-10 15:10:15
+-- Dump completed on 2019-05-13 13:39:10
